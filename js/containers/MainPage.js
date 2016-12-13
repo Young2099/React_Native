@@ -15,7 +15,7 @@ import px2dp from '../utils/px2dp';
 export default class MainPage extends Component {
     render() {
         return (
-            <BottomTabBar navigator ={this.props.navigator} />
+            <BottomTabBar navigator={this.props.navigator}/>
         );
     }
 }
@@ -23,14 +23,15 @@ export default class MainPage extends Component {
 class BottomTabBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedTab: 'me'};
+        this.state = {selectedTab: 'home'};
         this.tabNames = ['首页', '发现', '收藏', '更多'];
     }
 
     render() {
-        const {navigator} = this.props;
+        const {navigator} = this.props;//这相当于是一个当前的状态值的一个定义
         return (
-            <TabNavigator style={styles.tabBarStyle}
+            <TabNavigator tabBarStyle={styles.tabBarStyle}
+                          sceneStyle={{paddingBottom: styles.tabBarStyle.height}}
                           hidesTabTouch={true}>
                 <TabNavigator.Item//底部的菜单栏
                     selected={this.state.selectedTab === 'home'}
@@ -58,7 +59,7 @@ class BottomTabBar extends Component {
                     renderIncon={() => <Image style={styles.tabBarItemIcon} source={this.state.moreNormal}/>}
                     renderSelectedIcon={() => <Image style={styles.tabBarItemIcon} source={this.state.moreSelected}/>}
                     onPress={() => this.setState({selectedTab: 'me'})}>
-                    {<CollectionFragment navigator ={navigator}/>}
+                    {<CollectionFragment navigator={navigator}/>}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'collection'}
@@ -68,7 +69,7 @@ class BottomTabBar extends Component {
                     renderSelectedIcon={() => <Image style={styles.tabBarItemIcon}
                                                      source={this.state.collectionSelected}/>}
                     onPress={() => this.setState({selectedTab: 'collection'})}>
-                    {<MoreFragment/>}
+                    {<MoreFragment navigator={navigator}/>}
                 </TabNavigator.Item>
             </TabNavigator>
 

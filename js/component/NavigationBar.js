@@ -31,18 +31,19 @@ export default class NavigationBar extends Component {
             rightBtnPress, isBackBtnOnLeft
         }= this.props;//渲染的时候拿到初始时候的参数
         return (
-            <View style={styles.toolbar}>
-                <View style={styles.fixedCell}>
-                    /*这里的判断是为了在实际引用组件的时候是否有按钮*/
-                    {leftBtnIcon ? <IconButton icon={leftBtnIcon} onPress={leftBtnPress}
-                                               isBackBtnOnLeft={isBackBtnOnLeft}/> : null}
-                </View>
-                <View style={styles.centerCell}>
-                    <Text style={styles.title}>{title}</Text>
-                </View>
-                <View style={styles.fixedCell}>
-                    {rightBtnIcon ? <IconButton icon={rightBtnIcon} onPress={rightBtnPress}
-                                                isBackBtnOnLeft={isBackBtnOnLeft}/> : null}
+            <View style={styles.container}>
+                <View style={styles.toolbar}>
+                    <View style={styles.fixedCell}>
+                        {leftBtnIcon ? <IconButton icon={leftBtnIcon} onPress={leftBtnPress}
+                                                   isBackBtnOnLeft={isBackBtnOnLeft}/> : null}
+                    </View>
+                    <View style={styles.centerCell}>
+                        <Text style={styles.title}>{title}</Text>
+                    </View>
+                    <View style={styles.fixedCell}>
+                        {rightBtnIcon ? <IconButton icon={rightBtnIcon} onPress={rightBtnPress}
+                                                    isBackBtnOnLeft={isBackBtnOnLeft}/> : null}
+                    </View>
                 </View>
             </View>
         );
@@ -76,6 +77,10 @@ class IconButton extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        height: theme.toolbar.height + px2dp(4),
+        width: theme.screenHeight
+    },
     backBtn: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -89,9 +94,9 @@ const styles = StyleSheet.create({
         backgroundColor: theme.toolbar.barColor,
         flexDirection: 'row',
         paddingTop: Platform.OS === 'android' ? 0 : px2dp(6),
-        elevation: 8,
+        elevation: 3,
         shadowColor: 'rgb(0,0,0)',
-        shadowOffset: {height: 5, width: 1},
+        shadowOffset: {height: 3, width: 1},
         shadowOpacity: 0.25,
         shadowRadius: 3
     },
@@ -108,6 +113,6 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: theme.toolbar.titleSize,
-        color: theme.toolbar.titleColor
+        color: theme.toolbar.titleColor,
     }
 });

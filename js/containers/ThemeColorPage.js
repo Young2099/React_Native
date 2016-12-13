@@ -5,8 +5,8 @@
 
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import NavigatorBar from '../../component/NavigationBar';
-import BackPageComponent from '../BackPageComponent';
+import NavigatorBar from '../component/NavigationBar';
+import BackPageComponent from './BackPageComponent';
 
 export default class ThemeColorPage extends BackPageComponent {
     render() {

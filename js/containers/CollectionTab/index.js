@@ -11,7 +11,7 @@ import SimpleRoItem from '../../component/SimpleRowItem';
 import theme from '../../constants/theme';
 import px2dp from '../../utils/px2dp';
 import NavigationBar from '../../component/NavigationBar';
-import ThemeColorPage from './ThemeColorPage';
+import ThemeColorPage from '../ThemeColorPage';
 export default class CollectionFragment extends Component {
     constructor(props) {
         super(props);
