@@ -5,13 +5,13 @@
 
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import theme from '../../constants/theme';
+import theme from '../../../constants/theme';
 
-export default class TextTabPage extends Component {
+export default class ImageTabPage extends Component {
     render() {
         return (
             <View style={{flex: 1, backgroundColor: theme.pageBackgroundColor}}>
-                <Text>文本</Text>
+                <Text>福利</Text>
             </View>
         );
     }

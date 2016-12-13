@@ -10,8 +10,8 @@ import TextTabPage from './TabPages/TextTabPage';
 import VideoTabPage from './TabPages/VideoTabPage';
 import ImageTabPage from './TabPages/ImageTabPage';
 
-import theme from '../constants/theme';
-export default class DiscoverFragment extends Component {
+import theme from '../../constants/theme';
+export default class DiscoveryFragment extends Component {
     constructor(props) {
         super(props);
         this.tabNames = ['福利', 'Android','ios','休息视频', '扩展阅读', '前端'];

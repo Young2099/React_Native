@@ -4,16 +4,14 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
-import theme from '../constants/theme';
-import NavigatorBar from '../component/NavigationBar';
+import {View, Text} from 'react-native';
+import theme from '../../../constants/theme';
 
-export default class CollectionFragment extends Component {
-
+export default class TextTabPage extends Component {
     render() {
         return (
             <View style={{flex: 1, backgroundColor: theme.pageBackgroundColor}}>
-                <NavigatorBar title="收藏"/>
+                <Text>文本</Text>
             </View>
         );
     }

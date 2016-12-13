@@ -25,18 +25,17 @@ export default class SimpleRowItem extends Component {
         if (Platform.OS === 'android') {
             return (
                 <TouchableNativeFeedback
-                    onPress={this.props.onPress}
-                >
+                    onPress={this.props.onPress}>
                     {this._renderContent()}
-
                 </TouchableNativeFeedback>
             );
         } else if (Platform.OS === 'ios') {
             return (
-                <TouchableOpacity
-                    onPress={this.props.onPress}>
+                <TouchableHighlight
+                    onPress={this.props.onPress}
+                    underlayColor={theme.touchableHighlightUnderlayColor}>
                     {this._renderContent()}
-                </TouchableOpacity>
+                </TouchableHighlight>
             );
 
 
@@ -58,7 +57,7 @@ export default class SimpleRowItem extends Component {
                         <Icon name="ios-arrow-forward" color={theme.segment.color} size={18}/>
                     </View>
                     { renderSegment ?
-                        <View style={styles.segmentLine}/>: null
+                        <View style={styles.segmentLine}/> : null
                     }
                 </View>
             </View>

@@ -6,10 +6,10 @@ import React, {Component} from 'react';
 import TabNavigator from 'react-native-tab-navigator';
 import theme from '../constants/theme';
 import {Image, Platform} from 'react-native';
-import HomeFragment from '../containers/HomeFragment';
-import MeFragment from '../containers/MeFragment';
-import DiscoverFragment from '../containers/DiscoverFragment';
-import CollectionFragment from '../containers/CollectionFragment';
+import HomeFragment from './HomeTab/index';
+import CollectionFragment from './CollectionTab/index';
+import DiscoveryFragment from './DiscoveryTab/index';
+import MoreFragment from './MoreTab/index';
 import Icon from 'react-native-vector-icons/Ionicons';
 import px2dp from '../utils/px2dp';
 export default class MainPage extends Component {
@@ -48,7 +48,7 @@ class BottomTabBar extends Component {
                     renderSelectedIcon={() => <Image style={styles.tabBarItemIcon}
                                                      source={this.state.compassSelected}/>}
                     onPress={() => this.setState({selectedTab: 'discovery'})}>
-                    {<DiscoverFragment/>}
+                    {<DiscoveryFragment/>}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'me'}
@@ -57,7 +57,7 @@ class BottomTabBar extends Component {
                     renderIncon={() => <Image style={styles.tabBarItemIcon} source={this.state.moreNormal}/>}
                     renderSelectedIcon={() => <Image style={styles.tabBarItemIcon} source={this.state.moreSelected}/>}
                     onPress={() => this.setState({selectedTab: 'me'})}>
-                    {<MeFragment/>}
+                    {<CollectionFragment/>}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'collection'}
@@ -67,7 +67,7 @@ class BottomTabBar extends Component {
                     renderSelectedIcon={() => <Image style={styles.tabBarItemIcon}
                                                      source={this.state.collectionSelected}/>}
                     onPress={() => this.setState({selectedTab: 'collection'})}>
-                    {<CollectionFragment/>}
+                    {<MoreFragment/>}
                 </TabNavigator.Item>
             </TabNavigator>
 
