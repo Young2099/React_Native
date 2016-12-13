@@ -14,14 +14,15 @@ import theme from '../../constants/theme';
 export default class DiscoveryFragment extends Component {
     constructor(props) {
         super(props);
-        this.tabNames = ['福利', 'Android','ios','休息视频', '扩展阅读', '前端'];
+        this.tabNames = ['福利', 'Android', 'ios', '休息视频', '扩展阅读', '前端'];
     }
 
     render() {
         return (
+            //可以滚动的ScrollableTabView..
             <ScrollableTabView
                 initialPage={0}
-                renderTabBar={() => <ScrollableTabBar/>}
+                renderTabBar={() => <ScrollableTabBar/>}//所设置的渲染tabBar的组件
                 tabBarUnderlineStyle={{backgroundColor: '#fff'}}
                 tabBarBackgroundColor={theme.mainThemeColor}
                 tabBarTextStyle={{color: '#fff'}}>

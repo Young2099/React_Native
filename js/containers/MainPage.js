@@ -15,7 +15,7 @@ import px2dp from '../utils/px2dp';
 export default class MainPage extends Component {
     render() {
         return (
-            <BottomTabBar/>
+            <BottomTabBar navigator ={this.props.navigator} />
         );
     }
 }
@@ -28,10 +28,11 @@ class BottomTabBar extends Component {
     }
 
     render() {
+        const {navigator} = this.props;
         return (
             <TabNavigator style={styles.tabBarStyle}
                           hidesTabTouch={true}>
-                <TabNavigator.Item
+                <TabNavigator.Item//底部的菜单栏
                     selected={this.state.selectedTab === 'home'}
                     title={this.tabNames[0]}
                     selectedTitleStyle={{color: theme.tabButton.selectedColor}}
@@ -57,7 +58,7 @@ class BottomTabBar extends Component {
                     renderIncon={() => <Image style={styles.tabBarItemIcon} source={this.state.moreNormal}/>}
                     renderSelectedIcon={() => <Image style={styles.tabBarItemIcon} source={this.state.moreSelected}/>}
                     onPress={() => this.setState({selectedTab: 'me'})}>
-                    {<CollectionFragment/>}
+                    {<CollectionFragment navigator ={navigator}/>}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'collection'}
@@ -76,6 +77,7 @@ class BottomTabBar extends Component {
     }
 
     componentWillMount() {
+        //Icon是第三方组件的一种方法，直接输入组件的名字，来显示所需要的组件的图片
         Icon.getImageSource('md-home', 100, theme.tabButton.normalColor).then((source) =>
             this.setState({homeNormal: source}));
         Icon.getImageSource('md-home', 100, theme.tabButton.selectedColor).then((source) =>

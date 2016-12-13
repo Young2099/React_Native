@@ -7,31 +7,33 @@ import {StyleSheet, View, Text, Platform, TouchableNativeFeedback} from 'react-n
 import theme from '../constants/theme';
 import px2dp from '../utils/px2dp';
 import Icon from 'react-native-vector-icons/Ionicons';
+//顶部的按钮框
 export default class NavigationBar extends Component {
     constructor(props) {
         super(props);
     }
 
     static propTypes = {
-        title: PropTypes.string.isRequired,
-        leftBtnIcon: PropTypes.string,
-        leftBtnPress: PropTypes.func,
-        rightBtnIcon: PropTypes.string,
+        title: PropTypes.string.isRequired,//必要的参数
+        leftBtnIcon: PropTypes.string,//bar左边的Image
+        leftBtnPress: PropTypes.func,//左边点击事件的响应函数
+        rightBtnIcon: PropTypes.string,//右边点击的Image
         rightBtnPress: PropTypes.func,
-        isBackBtnOnLeft: PropTypes.bool
+        isBackBtnOnLeft: PropTypes.bool//这个是点击事件的确定
     };
     static defaultProps = {
-        isBackBtnOnLeft: false
+        isBackBtnOnLeft: false//默认返回的是false
     };
 
     render() {
         const {
             title, leftBtnIcon, leftBtnPress, rightBtnIcon,
             rightBtnPress, isBackBtnOnLeft
-        }= this.props;
+        }= this.props;//渲染的时候拿到初始时候的参数
         return (
             <View style={styles.toolbar}>
                 <View style={styles.fixedCell}>
+                    /*这里的判断是为了在实际引用组件的时候是否有按钮*/
                     {leftBtnIcon ? <IconButton icon={leftBtnIcon} onPress={leftBtnPress}
                                                isBackBtnOnLeft={isBackBtnOnLeft}/> : null}
                 </View>
@@ -47,18 +49,19 @@ export default class NavigationBar extends Component {
     }
 
 }
-
+//自定的组件按钮
 class IconButton extends Component {
     static propTypes = {
-        icon:PropTypes.string.isRequired,
-        onPress:PropTypes.func,
-        isBackBtnOnLeft:PropTypes.bool
+        icon: PropTypes.string.isRequired,
+        onPress: PropTypes.func,
+        isBackBtnOnLeft: PropTypes.bool
     }
 
     render() {
         if (Platform.OS === 'android') {
-            const icon = 'md-'+this.props.icon;
+            const icon = 'md-' + this.props.icon;
             return (
+                /*android平台表示组件触摸之后又点击反馈的效果*/
                 <TouchableNativeFeedback
                     onPress={this.props.onPress}
                 >
@@ -77,9 +80,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
-        width:theme.toolbar.height,
-        height:Platform.OS ==='android'? theme.toolbar.height:
-            theme.toolbar.height-px2dp(6),
+        width: theme.toolbar.height,
+        height: Platform.OS === 'android' ? theme.toolbar.height :
+        theme.toolbar.height - px2dp(6),
     },
     toolbar: {
         height: theme.toolbar.height,
@@ -95,7 +98,7 @@ const styles = StyleSheet.create({
     fixedCell: {
         width: theme.toolbar.height,
         height: theme.toolbar.height,
-        flexDirection:'row'
+        flexDirection: 'row'
     },
     centerCell: {
         flex: 1,

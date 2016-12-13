@@ -11,13 +11,17 @@ import SimpleRoItem from '../../component/SimpleRowItem';
 import theme from '../../constants/theme';
 import px2dp from '../../utils/px2dp';
 import NavigationBar from '../../component/NavigationBar';
+import ThemeColorPage from './ThemeColorPage';
 export default class CollectionFragment extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <NavigationBar title="收藏" leftBtnPress={this._itemClickCallback.bind(this)} leftBtnIcon="arrow-back"
                                isBackBtnOnLeft={true}/>
-                <Text>me</Text>
                 <View style={styles.block}>
 
                     <SimpleRoItem title="主题" icon="md-brush" onPress={this._itemClickCallback.bind(this)}/>
@@ -30,6 +34,7 @@ export default class CollectionFragment extends Component {
     }
 
     _itemClickCallback() {
+        this.props.navigator.push({component: ThemeColorPage});
     }
 
 
