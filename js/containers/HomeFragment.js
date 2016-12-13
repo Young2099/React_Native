@@ -7,7 +7,7 @@ import {Text,StyleSheet} from 'react-native';
 export default class DiscoverFragment extends Component{
     render(){
         return(
-            <Text style={styles.text}>
+            <Text style={styles.textHomeStyle}>
                 Hello HomeFragment!
             </Text>
 
@@ -17,7 +17,7 @@ export default class DiscoverFragment extends Component{
 }
 
 const styles = StyleSheet.create({
-    text:{
+    textHomeStyle:{
         width:40,
         alignItems:'center'
     }

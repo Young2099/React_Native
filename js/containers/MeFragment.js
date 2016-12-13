@@ -6,7 +6,7 @@
  */
 
 import React, {Component} from 'react';
-import {Text,StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View} from 'react-native';
 import SimpleRoItem from '../component/SimpleRowItem';
 import theme from '../constants/theme';
 import px2dp from '../utils/px2dp';
@@ -15,7 +15,7 @@ export default class DiscoverFragment extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <NavigationBar title="我"/>  <NavigationBar title="更多"/>
+                <NavigationBar title="我"/>
                 <Text>me</Text>
                 <View style={styles.block}>
                     <SimpleRoItem title="主题" icon="md-brush"/>
