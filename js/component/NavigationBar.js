@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
         shadowColor: 'rgb(0,0,0)',
         shadowOffset: {height: 3, width: 1},
         shadowOpacity: 0.25,
-        shadowRadius: 3
+        shadowRadius: 3,
+        justifyContent:'center'
     },
     fixedCell: {
         width: theme.toolbar.height,

@@ -15,7 +15,6 @@ export default class Avatar extends Component {
         backgroundColor: PropTypes.string,
         text: PropTypes.string,
         textSize: PropTypes.number,
-        onPress:PropTypes.func,
 
     };
     //这是在初始化的时候定义一些特定需要的参数的值
@@ -31,13 +30,12 @@ export default class Avatar extends Component {
             return (
                 <View
                     style={[{
-                        padding: 5,
                         width: width,
                         height: width,
                         borderRadius: width / 2
                         , backgroundColor: backgroundColor
                     }, styles.cell]}>
-                    <Icon name={icon} color="#fff" size={width / 2} onPress={onPress}/>
+                    <Icon name={icon} color="#fff" size={width / 2}/>
 
                 </View>
 
@@ -46,7 +44,6 @@ export default class Avatar extends Component {
             return (
                 <View
                     style={[{
-                        padding: 5,
                         width: width,
                         height: width,
                         borderRadius: width / 2,
