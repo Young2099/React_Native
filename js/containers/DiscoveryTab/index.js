@@ -20,7 +20,7 @@ export default class DiscoveryFragment extends Component {
     render() {
         return (
             //可以滚动的ScrollableTabView..
-            <ScrollableTabView
+            <ScrollableTabView//类似android的TabBar
                 initialPage={0}
                 renderTabBar={() => <ScrollableTabBar/>}//所设置的渲染tabBar的组件
                 tabBarUnderlineStyle={{backgroundColor: '#fff'}}
