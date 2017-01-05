@@ -58,15 +58,15 @@ class HomeFragment extends Component {
                                                                    headerTitle={item}/>
                                         })}
                                     </View>
-                                    <View style={{width: theme.screenWidth, alignItems: 'center', margin: 15}}>
-                                        <TouchableHighlight
+                                    <View style={styles.footer}>
+                                        <TouchableOpacity
                                             onPress={this._onPress.bind(this, 1)}
-                                            underlayColor={theme.touchableHighlightUnderlayColor}
+                                            activeOpacity={theme.touchableOpacityActiveOpacity}
                                         >
                                             <View style={styles.bottomBtn}>
                                                 <Text style={styles.btnLabel}>没看够？试试往期干货吧</Text>
                                             </View>
-                                        </TouchableHighlight>
+                                        </TouchableOpacity>
                                     </View>
                                 </View>
                             }</View>
@@ -145,7 +145,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
-
+    footer: {
+        width: theme.screenWidth,
+        height: px2dp(70),
+        alignItems: 'center',
+        backgroundColor: '#fff',
+    }
+    ,
     scrollContents: {
         height: theme.screenHeight,
     },
@@ -156,7 +162,7 @@ const styles = StyleSheet.create({
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 3,
+        borderRadius: 30,
     },
     btnLabel: {
         color: '#fff',
