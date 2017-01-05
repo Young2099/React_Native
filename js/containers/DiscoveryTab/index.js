@@ -9,6 +9,9 @@ import px2dp from '../../utils/px2dp';
 import NavigatorBar from '../../component/NavigationBar';
 import Avatar from '../../component/Avatar';
 import theme from '../../constants/theme';
+import ImageTabPage from './TabPages/ImageTabPage';
+import TextTabPage from './TabPages/TextTabPage';
+import VideoTabPage from './TabPages/VideoTabPage';
 export default class DiscoveryFragment extends Component {
     constructor(props) {
         super(props);
@@ -46,12 +49,12 @@ export default class DiscoveryFragment extends Component {
                                             <View style={styles.btnCell} key={i + index}>
                                                 {Platform.OS === 'android' ?
                                                     <TouchableNativeFeedback
-                                                        onPress={this._itemPressCallBack.bind(this, i + index)}
+                                                        onPress={this._itemPressCallBack.bind(this, i + index, subItem)}
                                                         background={TouchableNativeFeedback.Ripple('rgba(0,0,0,.2)', true)}>
                                                         {this.__renderBtnContent(i, index)}
                                                     </TouchableNativeFeedback> :
                                                     <TouchableHighlight
-                                                        onPress={this._itemPressCallBack.bind(this, i + index)}
+                                                        onPress={this._itemPressCallBack.bind(this, i + index, subItem)}
                                                         underlayColor={theme.touchableHighlightUnderlayColor}>
                                                         {this.__renderBtnContent(i, index)}
                                                     </TouchableHighlight>}
@@ -71,12 +74,29 @@ export default class DiscoveryFragment extends Component {
 
     //跳转对应的Fragment的函数
     _itemPressCallBack() {
-        // this.props.navigator.push({component: });
+        switch (id) {
+            case 3:  //福利Page
+                this._pushScene(ImageTabPage, title);
+                break;
+            case 4: //视频Page
+                this._pushScene(VideoTabPage, title);
+                break;
+            default:
+                this._pushScene(TextTabPage, title);
+                break;
+        }
+    }
+
+    _pushScene(component, title) {
+        this.props.navigator.push({
+            component: component,
+            args: {title: title}
+        })
     }
 
     __renderBtnContent(i, index) {
         return (
-            <View style={{width: 100, height: 100, borderRadius: 50, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{width: 100, height: 100, alignItems: 'center', justifyContent: 'center'}}>
                 <Avatar icon={this.tabIcon[i][index]} width={70} backgroundColor={this.tabColor[i][index]}/>
             </View>
         );
@@ -91,14 +111,15 @@ const styles = StyleSheet.create({
     },
     btnPanel: {
         backgroundColor: '#fff',
-        height: px2dp(250),
+        height: px2dp(260),
         width: theme.screenWidth,
         marginTop: px2dp(12),
         borderBottomColor: theme.segment.color,
         borderBottomWidth: theme.segment.width,
         borderTopColor: theme.segment.color,
         borderTopWidth: theme.segment.width,
-        padding: px2dp(10)
+        padding: px2dp(10),
+        paddingTop: px2dp(20)
     },
     btnCell: {
         flex: 1,
@@ -109,8 +130,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingLeft: 10,
-        paddingRight: 10,
+
     },
     label: {
         marginTop: px2dp(-5),
